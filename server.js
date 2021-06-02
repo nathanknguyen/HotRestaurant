@@ -9,39 +9,41 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-const characters = [
+const guests = [
+  {
+    routeName: 'yodo',
+    name: 'Yoda',
+    telephone: '11111111',
+    id: 90,
+    email: 'fakeemail@notreal.com',
+  },
   {
     routeName: 'yoda',
     name: 'Yoda',
-    role: 'Jedi Master',
-    age: 900,
-    forcePoints: 2000,
+    telephone: '11114111',
+    id: 245,
+    email: 'fakeemail@notreal.com',
   },
   {
-    routeName: 'darthmaul',
-    name: 'Darth Maul',
-    role: 'Sith Lord',
-    age: 200,
-    forcePoints: 1200,
-  },
-  {
-    routeName: 'obiwankenobi',
-    name: 'Obi Wan Kenobi',
-    role: 'Jedi Master',
-    age: 55,
-    forcePoints: 1350,
+    routeName: 'yode',
+    name: 'Yoda',
+    telephone: '11111112',
+    id: 227,
+    email: 'fakeemail@notreal.com',
   },
 ];
 
 // Routes
 
 // Basic route that sends the user first to the AJAX Page
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'view.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'home.html')));
 
-app.get('/add', (req, res) => res.sendFile(path.join(__dirname, 'add.html')));
+app.get('/reserve', (req, res) => res.sendFile(path.join(__dirname, 'make.html')));
+
+app.get('/view', (req, res) => res.sendFile(path.join(__dirname, 'view.html')));
 
 // Displays all characters
-app.get('/api/characters', (req, res) => res.json(characters));
+app.get('/api/guests', (req, res) => res.json(guests));
 
 // Displays a single character, or returns false
 app.get('/api/characters/:character', (req, res) => {
