@@ -90,7 +90,7 @@
         // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
         searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
 
-        fetch(`/api/characters/${searchedCharacter}`, {
+        fetch(`/api//${searchedCharacter}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

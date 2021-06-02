@@ -15,21 +15,21 @@ const guests = [
     name: 'Yoda',
     telephone: '11111111',
     id: 90,
-    email: 'fakeemail@notreal.com',
+    email: 'fakeemail34@notreal.com',
   },
   {
     routeName: 'yoda',
     name: 'Yoda',
     telephone: '11114111',
     id: 245,
-    email: 'fakeemail@notreal.com',
+    email: 'fakeemai3l@notreal.com',
   },
   {
     routeName: 'yode',
     name: 'Yoda',
     telephone: '11111112',
     id: 227,
-    email: 'fakeemail@notreal.com',
+    email: 'fakeemail3@notreal.com',
   },
 ];
 
@@ -46,8 +46,8 @@ app.get('/view', (req, res) => res.sendFile(path.join(__dirname, 'view.html')));
 app.get('/api/guests', (req, res) => res.json(guests));
 
 // Displays a single character, or returns false
-app.get('/api/characters/:character', (req, res) => {
-  const chosen = req.params.character;
+app.get('/api/guests/:guest', (req, res) => {
+  const chosen = req.params.guest;
 
   console.log(chosen);
 
@@ -55,9 +55,9 @@ app.get('/api/characters/:character', (req, res) => {
    If the statement is true, send the character back as JSON,
    otherwise tell the user no character was found */
 
-  for (let i = 0; i < characters.length; i++) {
-    if (chosen === characters[i].routeName) {
-      return res.json(characters[i]);
+  for (let i = 0; i < guests.length; i++) {
+    if (chosen === guests[i].routeName) {
+      return res.json(guests[i]);
     }
   }
 
@@ -65,18 +65,18 @@ app.get('/api/characters/:character', (req, res) => {
 });
 
 // Create New Characters - takes in JSON input
-app.post('/api/characters', (req, res) => {
+app.post('/api/guests', (req, res) => {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
-  const newCharacter = req.body;
+  const newGuest = req.body;
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newCharacter.routeName = newCharacter.name.replace(/\s+/g, '').toLowerCase();
-  console.log(newCharacter);
+  newGuest.routeName = newGuest.name.replace(/\s+/g, '').toLowerCase();
+  console.log(newGuest);
 
-  characters.push(newCharacter);
-  res.json(newCharacter);
+  guest.push(newGuest);
+  res.json(newGuest);
 });
 
 // Starts the server to begin listening
